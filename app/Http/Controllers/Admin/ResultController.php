@@ -11,7 +11,7 @@ use App\Http\Requests\Admin\ResultRequest;
 
 class ResultController extends Controller
 {
-   
+
     public function index(): View
     {
         $results = Result::all();
@@ -30,7 +30,6 @@ class ResultController extends Controller
     {
         $result = Result::create($request->validated() + ['user_id' => auth()->id()]);
         $result->questions()->sync($request->input('questions', []));
-
         return redirect()->route('admin.results.index')->with([
             'message' => 'successfully created !',
             'alert-type' => 'success'

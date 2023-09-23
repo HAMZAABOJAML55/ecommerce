@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-   
+
 
     <!-- Content Row -->
         <div class="card">
@@ -21,6 +21,8 @@
                     </a>
                 </div>
             </div>
+
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover datatable datatable-category" cellspacing="0" width="100%">

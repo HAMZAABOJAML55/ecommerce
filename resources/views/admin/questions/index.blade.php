@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-   
+
 
     <!-- Content Row -->
         <div class="card">
@@ -43,8 +43,7 @@
                                 </td>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $question->category->name }}</td>
-                                <td>{{ $question->question_text }}</td>
-                                <td>
+                                <td><img style="width: 220px; height: 100px; object-fit: cover;"  src="{{ asset('image/offers/'.$question->question_text) }}"></td>                                <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.questions.edit', $question->id) }}" class="btn btn-info">
                                             <i class="fa fa-pencil-alt"></i>

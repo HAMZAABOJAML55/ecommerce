@@ -25,7 +25,7 @@ class QuestionRequest extends FormRequest
     {
         return [
             'category_id' => 'required',
-            'question_text' => 'required'
+            'photo' => 'required'
         ];
     }
 }

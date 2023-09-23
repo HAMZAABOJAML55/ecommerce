@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'gaber') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,11 +25,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <h3 class="mx-auto text-center">  
+                <h3 class="mx-auto text-center">
                     <a class="nav-link text-center" href="{{ route('client.test') }}">
                         {{ __('Start Test') }}
                     </a></h3>
-                <h5 class="mx-auto text-center d-flex">  
+                <h5 class="mx-auto text-center d-flex">
                     @auth
                         <a class="nav-link text-center" href="{{ route('admin.dashboard.index') }}">
                             {{ auth()->user()->name }}
@@ -39,8 +39,8 @@
                         </a>
                     @endauth
                     <form class="d-none" action="{{ route('logout') }}" id="logout-form" method="post">
-                        @csrf 
-                        
+                        @csrf
+
                     </form>
                 </h5>
             </div>

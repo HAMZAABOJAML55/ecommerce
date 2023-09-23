@@ -10,11 +10,12 @@ use App\Http\Requests\Admin\CategoryRequest;
 
 class CategoryController extends Controller
 {
-   
+
+
+
     public function index(): View
     {
         $categories = Category::all();
-
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -32,6 +33,9 @@ class CategoryController extends Controller
             'alert-type' => 'success'
         ]);
     }
+
+
+
 
     public function show(Category $category): View
     {

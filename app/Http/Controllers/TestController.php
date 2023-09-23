@@ -10,8 +10,24 @@ use App\Http\Requests\StoreTestRequest;
 
 class TestController extends Controller
 {
+
+
+    public function selectCategory()
+    {
+        $categories = Category::all();
+
+        return view('selectCategory', compact('categories'));
+    }
+
+    public function select()
+    {
+        return view('select');
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////
     public function index()
     {
+
         $categories = Category::with(['categoryQuestions' => function ($query) {
                 $query->inRandomOrder()
                     ->with(['questionOptions' => function ($query) {
@@ -23,7 +39,24 @@ class TestController extends Controller
 
         return view('client.test', compact('categories'));
     }
+    ////////////////////////////////////////////////////////////////////
 
+    public function index2($id)
+    {
+
+        $categories = Category::with(['categoryQuestions' => function ($query) {
+                $query->inRandomOrder()
+                    ->with(['questionOptions' => function ($query) {
+                        $query->inRandomOrder();
+                    }]);
+            }])
+            ->whereHas('categoryQuestions')
+            ->find($id);
+
+        return view('client.test2', compact('categories'));
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
     public function store(StoreTestRequest $request)
     {
         $options = Option::find(array_values($request->input('questions')));
@@ -44,4 +77,10 @@ class TestController extends Controller
 
         return redirect()->route('client.results.show', $result->id);
     }
+
+
 }
+
+
+
+

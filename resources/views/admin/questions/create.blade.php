@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    
+
 
     @if($errors->any())
         <div class="alert alert-danger">
@@ -25,11 +25,12 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.questions.store') }}" method="POST">
+                <form action="{{ route('admin.questions.store') }}"  method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="question_text">{{ __('question text') }}</label>
-                        <input type="text" class="form-control" id="question_text" placeholder="{{ __('question text') }}" name="question_text" value="{{ old('question_text') }}" />
+                        <label for="photo">{{ __('question photo') }}</label>
+                        <br>
+                        <input type="file" name="photo" />
                     </div>
                     <div class="form-group">
                         <label for="category">{{ __('Category') }}</label>
@@ -43,7 +44,7 @@
                 </form>
             </div>
         </div>
-    
+
 
     <!-- Content Row -->
 

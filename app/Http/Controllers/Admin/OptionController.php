@@ -12,7 +12,7 @@ use App\Models\Question;
 
 class OptionController extends Controller
 {
-   
+
     public function index(): View
     {
         $options = Option::all();

@@ -11,7 +11,7 @@ use App\Models\Category;
 
 class QuestionController extends Controller
 {
-   
+
     public function index(): View
     {
         $questions = Question::all();
@@ -25,17 +25,27 @@ class QuestionController extends Controller
 
         return view('admin.questions.create', compact('categories'));
     }
-
-    public function store(QuestionRequest $request): RedirectResponse
+    ////////////////////////////////////////////////////////////////////////////////////////
+    public function store(QuestionRequest $request)
     {
-        Question::create($request->validated());
+//        return $request;
 
+        $validatedData = $request->validated();
+        if ($request->hasFile('photo')) {
+            $fileExtension = $request->file('photo')->getClientOriginalExtension();
+            $fileName = $request->file('photo')->getClientOriginalName() . '.' . $fileExtension;
+            $storagePath = public_path('image/offers/');
+            $request->file('photo')->move($storagePath, $fileName);
+            $validatedData['photo'] = $fileName;
+        }
+
+        Question::create($validatedData);
         return redirect()->route('admin.questions.index')->with([
-            'message' => 'successfully created !',
-            'alert-type' => 'success'
+            'message' => 'Successfully created!',
+            'alert-type' => 'success',
         ]);
     }
-
+////////////////////////////////////////////////////////////////////////////
     public function show(Question $question): View
     {
         return view('admin.questions.show', compact('question'));

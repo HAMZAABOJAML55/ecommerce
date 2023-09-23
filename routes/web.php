@@ -16,14 +16,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('client.test');
+    return View('home');
+    // return redirect()->route ('home'); //('client.test');
+});
+Route::get('home', function () {
+    return View('home');
+    // return redirect()->route ('home'); //('client.test');
 });
 
+
+// Route::get('/fetch_video',[App\Http\Controllers\VideoController::class,'fetch']);
+// Route::get('/index_u',[App\Http\Controllers\VideoController::class,'index']);
+// Route::post('/insert_video',[App\Http\Controllers\VideoController::class,'insert'])->name('insert.file');
+
+
 Route::group(['middleware' => 'auth'], function() {
-   
+
     Route::get('test',[\App\Http\Controllers\TestController::class, 'index'])->name('client.test');
     Route::post('test',[\App\Http\Controllers\TestController::class, 'store'])->name('client.test.store');
     Route::get('results/{result_id}',[\App\Http\Controllers\ResultController::class, 'show'])->name('client.results.show');
+
+
+    Route::get('selectCategory',[\App\Http\Controllers\TestController::class,'selectCategory'])->name('selectCategory');
+    Route::get('select',[\App\Http\Controllers\TestController::class,'select'])->name('select');
+    Route::get('test2/{id}',[\App\Http\Controllers\TestController::class, 'index2'])->name('client.test2');
+
+    // Route::get('selectId',[\App\Http\Controllers\TestController::class, 'index2'])->name('selectId');
 
     // admin only
     Route::group(['middleware' => 'isAdmin','prefix' => 'admin', 'as' => 'admin.'], function() {
@@ -34,7 +52,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('roles_mass_destroy', [\App\Http\Controllers\Admin\RoleController::class, 'massDestroy'])->name('roles.mass_destroy');
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
         Route::delete('users_mass_destroy', [\App\Http\Controllers\Admin\UserController::class, 'massDestroy'])->name('users.mass_destroy');
-        
+
         // categories
         Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
         Route::delete('categories_mass_destroy', [\App\Http\Controllers\Admin\CategoryController::class, 'massDestroy'])->name('categories.mass_destroy');

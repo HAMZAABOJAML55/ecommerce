@@ -23,12 +23,12 @@
                         @foreach($categories as $category)
                             <div class="card mb-3">
                                 <div class="card-header">{{ $category->name }}</div>
-                
+
                                 <div class="card-body">
                                     @foreach($category->categoryQuestions as $question)
                                         <div class="card @if(!$loop->last)mb-3 @endif">
-                                            <div class="card-header">{{ $question->question_text }}</div>
-                        
+                                            <div class="card-header"><img style="width: 220px; height: 100px; object-fit: cover;"  src="image/offers/{{$question->photo}}"></div>
+
                                             <div class="card-body">
                                                 <input type="hidden" name="questions[{{ $question->id }}]" value="">
                                                 @foreach($question->questionOptions as $option)
