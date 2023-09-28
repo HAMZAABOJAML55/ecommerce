@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="services" class="services"  style="margin-top : 100px
+<section id="services" class="services"  style="margin-top : 100px;
 .drag-area{
   border: 2px dashed #fff;
   height: 500px;

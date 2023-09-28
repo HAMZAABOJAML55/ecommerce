@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\video;
+use App\Models\Video;
 
 class VideoController extends Controller
 {
@@ -17,7 +17,7 @@ class VideoController extends Controller
 
     public function fetch()
     {
-      $data=video::all()->toArray();
+      $data=Video::all()->toArray();
       return view('video',compact('data'));
     }
 
@@ -31,7 +31,7 @@ class VideoController extends Controller
        $file->move('upload',$file->getClientOriginalName());
        $file_name=$file->getClientOriginalName();
 
-       $insert=new video();
+       $insert=new Video();
        $insert->video = $file_name;
        $insert->save();
 

@@ -15,4 +15,13 @@ class Category extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
+
+    public function documents(){
+        return $this->hasMany(Document::class);
+    }
+
 }
