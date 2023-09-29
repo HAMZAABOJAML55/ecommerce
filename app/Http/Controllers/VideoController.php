@@ -11,7 +11,7 @@ class VideoController extends Controller
 {
   public  function index()
     {
-        return view("index");
+        return view('index.video');
     }
 
 
@@ -19,6 +19,11 @@ class VideoController extends Controller
     {
       $data=Video::all()->toArray();
       return view('video',compact('data'));
+    }
+
+    public function create()
+    {
+        return view('video.create');
     }
 
     public  function insert(Request $request)
@@ -36,5 +41,20 @@ class VideoController extends Controller
        $insert->save();
 
        return redirect('/fetch_video');
+    }
+
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'video_link' => 'required|url',
+        ]);
+
+
+        $video = new Video();
+        $video->video_link = $request->input('video_link');
+        $video->save();
+
+        return redirect()->route('video.create')->with('success', 'تمت إضافة الفيديو بنجاح.');
     }
  }

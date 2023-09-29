@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VideoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +70,15 @@ Route::group(['middleware' => 'auth'], function() {
         // results
         Route::resource('results', \App\Http\Controllers\Admin\ResultController::class);
         Route::delete('results_mass_destroy', [\App\Http\Controllers\Admin\ResultController::class, 'massDestroy'])->name('results.mass_destroy');
+        // results
+
+        Route::resource('video', \App\Http\Controllers\VideoController::class);
+        Route::delete('video_mass_destroy', [\App\Http\Controllers\Admin\VideoController::class, 'massDestroy'])->name('video.mass_destroy');
+
+        Route::get('/add-video', [VideoController::class, 'create'])->name('video.create');
+        Route::post('/add-video', [VideoController::class, 'store'])->name('video.store');
     });
+
 
 });
 

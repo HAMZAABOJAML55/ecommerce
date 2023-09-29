@@ -17,7 +17,9 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnUpdate();
-            $table->longText('question_text');
+            $table->longText('question_text')->nullable();
+            $table->longText('photo')->nullable();
+
             $table->timestamps();
         });
     }
