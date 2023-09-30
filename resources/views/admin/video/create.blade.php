@@ -28,8 +28,16 @@
                 <form action="{{ route('admin.video.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
+                        <label for="category">{{ __('Category') }}</label>
+                        <select class="form-control" name="category_id" id="category">
+                            @foreach($categories as $id => $category)
+                                <option value="{{ $id }}">{{ $category }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="name">{{ __('video') }}</label>
-                        <input type="text" class="form-control" id="name" placeholder="{{ __('video') }}" name="name" value="{{ old('video') }}" />
+                        <input type="text" class="form-control" id="name" placeholder="{{ __('video') }}" name="video" value="{{ old('video') }}" />
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Save') }}</button>
                 </form>

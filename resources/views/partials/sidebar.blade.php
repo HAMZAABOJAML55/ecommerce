@@ -55,16 +55,16 @@
                     <span>{{ __('Result') }}</span></a>
             </li>
 
-    <li class="nav-item {{ request()->is('admin/results') || request()->is('admin/results') ? 'active' : '' }}">
-        <a class="nav-link" href="#">
+    <li class="nav-item {{ request()->is('admin/video') || request()->is('admin/video') ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('admin.video.create')}}">
             <i class="fas fa-cogs"></i>
             <span>{{ __('video') }}</span></a>
     </li>
 
-    <li class="nav-item {{ request()->is('admin/results') || request()->is('admin/results') ? 'active' : '' }}">
-        <a class="nav-link" href="#">
-            <i class="fas fa-cogs"></i>
-            <span>{{ __('document') }}</span></a>
-    </li>
+{{--    <li class="nav-item {{ request()->is('admin/results') || request()->is('admin/results') ? 'active' : '' }}">--}}
+{{--        <a class="nav-link" href="#">--}}
+{{--            <i class="fas fa-cogs"></i>--}}
+{{--            <span>{{ __('document') }}</span></a>--}}
+{{--    </li>--}}
 
         </ul>
